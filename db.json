@@ -58,7 +58,7 @@
       "id": 4,
       "title": "Educated",
       "subtitle": "A Memoir",
-      "description":"Educated is a memoir by Tara Westover, detailing her journey from growing up in a strict and abusive household in rural Idaho to earning a PhD from Cambridge University.",
+      "description": "Educated is a memoir by Tara Westover, detailing her journey from growing up in a strict and abusive household in rural Idaho to earning a PhD from Cambridge University.",
       "author": "Tara Westover",
       "available": true,
       "image": "https://images.blinkist.io/images/books/5b01b50cb238e100075e00cf/1_1/470.jpg",
@@ -75,7 +75,7 @@
     {
       "id": 5,
       "title": "Becoming",
-      "subtitle": "A Memoir",
+      "subtitle": "The intimate, powerful, and inspiring memoir by the former First Lady of the United States",
       "description": "Michelle Obama's journey from the South Side of Chicago to the White House.",
       "author": "Michelle Obama",
       "available": true,
@@ -109,9 +109,9 @@
       "reviews": 20000
     },
     {
-      "id":7,
+      "id": 7,
       "title": "The Great Gatsby",
-      "subtitle": "A Novel",
+      "subtitle": "A Classic Novel on the American Dream of the Roaring Twenties",
       "description": "A classic tale of love, wealth, and the American Dream.",
       "author": "F. Scott Fitzgerald",
       "available": true,
@@ -129,7 +129,7 @@
     {
       "id": 8,
       "title": "To Kill a Mockingbird",
-      "subtitle": "A Novel",
+      "subtitle": "A Pulitzer Prize-Winning Classic on Racial Prejudice & Injustice",
       "description": "A gripping tale of racial injustice and moral growth.",
       "author": "Harper Lee",
       "available": true,
@@ -147,7 +147,7 @@
     {
       "id": 9,
       "title": "1984",
-      "subtitle": "A Novel",
+      "subtitle": "A Dystopian Classic on the Dangers of Totalitarianism",
       "description": "A dystopian novel about totalitarianism and surveillance.",
       "author": "George Orwell",
       "available": true,
@@ -165,7 +165,7 @@
     {
       "id": 10,
       "title": "The Catcher in the Rye",
-      "subtitle": "A Novel",
+      "subtitle": "A Coming-Of-Age Classic on Belonging and Teenage Alienation",
       "description": "A story about teenage angst and alienation.",
       "author": "J.D. Salinger",
       "available": true,
@@ -179,6 +179,15 @@
       "pages": 277,
       "rating": 4.3,
       "reviews": 18000
+    }
+  ],
+
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@hexad.com",
+      "password": "admin123",
+      "role": "admin"
     }
   ]
 }
