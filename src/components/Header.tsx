@@ -1,12 +1,14 @@
 import React from "react";
 import { auth } from "../lib/firebase";
 import { checkIsAdmin } from "../utils/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("user");
-    window.location.href = "/login"; // Redirect to login page
+    navigate("/login");
 
     auth.signOut();
   };
@@ -26,16 +28,16 @@ const Header = () => {
               Admin Dashboard
             </Link>
             <Link
-              to="/users"
+              to="/admin/users"
               className="text-orange-500 hover:text-orange-600 font-medium transition"
             >
               Users
             </Link>
             <Link
-              to="/"
+              to="/my-books"
               className="text-orange-500 hover:text-orange-600 font-medium transition"
             >
-              Books
+              My Books
             </Link>
           </>
         )}

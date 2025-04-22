@@ -1,7 +1,7 @@
 {
   "books": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Atomic Habits",
       "subtitle": "An Easy & Proven Way to Build Good Habits & Break Bad Ones",
       "description": "Learn how small changes can lead to remarkable results.",
@@ -19,14 +19,14 @@
       "reviews": 15000
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "The Power of Now",
       "subtitle": "A Guide to Spiritual Enlightenment",
       "description": "Discover the transformative power of living in the present moment.",
       "author": "Eckhart Tolle",
       "available": true,
       "image": "https://images.blinkist.io/images/books/530c61aa34623100082d0000/1_1/470.jpg",
-      "quantity": 5,
+      "quantity": 6,
       "category": "Spirituality",
       "publishedYear": 1997,
       "publisher": "New World Library",
@@ -37,7 +37,7 @@
       "reviews": 12000
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "The Subtle Art of Not Giving a F*ck",
       "subtitle": "A Counterintuitive Approach to Living a Good Life",
       "description": "Learn how to prioritize what truly matters in life.",
@@ -55,7 +55,7 @@
       "reviews": 8000
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Educated",
       "subtitle": "A Memoir",
       "description": "Educated is a memoir by Tara Westover, detailing her journey from growing up in a strict and abusive household in rural Idaho to earning a PhD from Cambridge University.",
@@ -73,7 +73,7 @@
       "reviews": 9000
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Becoming",
       "subtitle": "The intimate, powerful, and inspiring memoir by the former First Lady of the United States",
       "description": "Michelle Obama's journey from the South Side of Chicago to the White House.",
@@ -91,7 +91,7 @@
       "reviews": 11000
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "The Alchemist",
       "subtitle": "A Fable About Following Your Dream",
       "description": "A journey of self-discovery and following one's dreams.",
@@ -109,7 +109,7 @@
       "reviews": 20000
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "The Great Gatsby",
       "subtitle": "A Classic Novel on the American Dream of the Roaring Twenties",
       "description": "A classic tale of love, wealth, and the American Dream.",
@@ -127,7 +127,7 @@
       "reviews": 15000
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "To Kill a Mockingbird",
       "subtitle": "A Pulitzer Prize-Winning Classic on Racial Prejudice & Injustice",
       "description": "A gripping tale of racial injustice and moral growth.",
@@ -145,7 +145,7 @@
       "reviews": 25000
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "1984",
       "subtitle": "A Dystopian Classic on the Dangers of Totalitarianism",
       "description": "A dystopian novel about totalitarianism and surveillance.",
@@ -163,7 +163,7 @@
       "reviews": 30000
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "The Catcher in the Rye",
       "subtitle": "A Coming-Of-Age Classic on Belonging and Teenage Alienation",
       "description": "A story about teenage angst and alienation.",
@@ -179,15 +179,48 @@
       "pages": 277,
       "rating": 4.3,
       "reviews": 18000
+    },
+    {
+      "id": "89c8",
+      "title": "Get to the Point!",
+      "author": "Joel Schwartzberg",
+      "subtitle": "Sharpen Your Message and Make Your Words Matter",
+      "description": "Get to the Point! (2017) is your guide to delivering clear, concise, and compelling messages. It emphasizes the importance of identifying and sticking to a precise point, and arms you with tools and techniques to build confidence in your written and spoken communications. ",
+      "category": "Communication Skills",
+      "quantity": 1,
+      "image": "https://images.blinkist.io/images/books/67bf3aaf8081ae019e4f73cf/1_1/470.jpg"
     }
   ],
-
+  "borrowedBooks": [
+    {
+      "id": "2",
+      "userId": 1,
+      "bookId": 5,
+      "borrowedDate": "2023-10-05",
+      "returnDate": null,
+      "status": "borrowed"
+    },
+    {
+      "id": "c626",
+      "bookId": "1",
+      "userId": 2
+    },
+    {
+      "id": "11d6",
+      "bookId": "89c8",
+      "userId": "1"
+    }
+  ],
   "users": [
     {
-      "id": 1,
-      "email": "admin@hexad.com",
-      "password": "admin123",
+      "id": "1",
+      "email": "adminuser@gmail.com",
       "role": "admin"
+    },
+    {
+      "id": "2",
+      "email": "testuser@abc.com",
+      "role": "user"
     }
   ]
 }

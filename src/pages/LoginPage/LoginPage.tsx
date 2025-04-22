@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { useNavigate } from "react-router-dom";
+import { getUsers } from "../../api/users";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,17 +19,19 @@ const LoginPage = () => {
       );
       const userEmail = userCredential.user.email;
 
-      const mockUserRoles: Record<string, "admin" | "user"> = {
-        "adminuser@gmail.com": "admin",
-        "testuser@abc.com": "user",
-      };
+      const { data: usersData } = await getUsers();
 
-      // Mock role assignment
-      const role = mockUserRoles[userEmail || ""] || "user";
-      localStorage.setItem("user", JSON.stringify({ email: userEmail, role }));
+      const loggedInUser = usersData.find(
+        (user: { email: string }) => user.email === userEmail
+      );
 
-      if (role === "admin") navigate("/admin");
-      else navigate("/");
+      if (!loggedInUser) {
+        throw new Error("User not found in mocked database");
+      }
+
+      localStorage.setItem("user", JSON.stringify(loggedInUser));
+
+      navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
     }

@@ -8,6 +8,9 @@ import { AdminPage } from "./pages/AdminPage";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import AppLayout from "./layouts/AppLayout";
 import AdminPrivateRoutes from "./utils/AdminPrivateRoutes";
+import { EditBook } from "./pages/EditBook";
+import { UsersListPage } from "./pages/UsersListPage";
+import { MyBooksPage } from "./pages/MyBooksPage";
 
 const App = () => {
   return (
@@ -22,16 +25,12 @@ const App = () => {
         }
       >
         <Route index element={<HomePage />} />
-        <Route index element={<HomePage />} />
+        <Route path="my-books" element={<MyBooksPage />} />
 
         <Route path="admin" element={<AdminPrivateRoutes />}>
-          {/* admin can access
-users
-books edit
-can borrow books
-
-*/}
-          <Route path="admin" element={<AdminPage />} />
+          <Route index element={<AdminPage />} />
+          <Route path="users" element={<UsersListPage />} />
+          <Route path="edit-book/:bookId?" element={<EditBook />} />
         </Route>
       </Route>
     </Routes>
