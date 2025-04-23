@@ -62,7 +62,7 @@
       "author": "Tara Westover",
       "available": true,
       "image": "https://images.blinkist.io/images/books/5b01b50cb238e100075e00cf/1_1/470.jpg",
-      "quantity": 2,
+      "quantity": 7,
       "category": "Memoir",
       "publishedYear": 2018,
       "publisher": "Random House",
@@ -193,21 +193,8 @@
   ],
   "borrowedBooks": [
     {
-      "id": "2",
-      "userId": 1,
-      "bookId": 5,
-      "borrowedDate": "2023-10-05",
-      "returnDate": null,
-      "status": "borrowed"
-    },
-    {
-      "id": "c626",
-      "bookId": "1",
-      "userId": 2
-    },
-    {
-      "id": "11d6",
-      "bookId": "89c8",
+      "id": "eb7e",
+      "bookId": "7",
       "userId": "1"
     }
   ],
@@ -215,12 +202,52 @@
     {
       "id": "1",
       "email": "adminuser@gmail.com",
+      "name": "Admin User",
       "role": "admin"
     },
     {
       "id": "2",
       "email": "testuser@abc.com",
+      "name": "Test User",
       "role": "user"
+    }
+  ],
+  "borrowedHistory": [
+    {
+      "id": "866e",
+      "bookId": "7",
+      "userId": "1",
+      "status": "returned",
+      "borrowedDate": "23/4/2025, 12:59:35 pm",
+      "returnDate": "23/4/2025, 1:04:18 pm"
+    },
+    {
+      "id": "63a8",
+      "bookId": "6",
+      "userId": "1",
+      "status": "returned",
+      "borrowedDate": "23/4/2025, 12:59:36 pm",
+      "returnDate": "23/4/2025, 1:04:16 pm"
+    },
+    {
+      "id": "45c4",
+      "bookId": "3",
+      "bookTitle": "The Subtle Art of Not Giving a F*ck",
+      "userId": "1",
+      "username": "Admin User",
+      "status": "returned",
+      "borrowedDate": "23/4/2025, 1:04:52 pm",
+      "returnDate": "23/4/2025, 2:26:27 pm"
+    },
+    {
+      "id": "bcf2",
+      "bookId": "7",
+      "bookTitle": "The Great Gatsby",
+      "userId": "1",
+      "username": "Admin User",
+      "status": "borrowed",
+      "borrowedDate": "23/4/2025, 1:04:56 pm",
+      "returnDate": ""
     }
   ]
 }

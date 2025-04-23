@@ -25,7 +25,7 @@ const BookCard = ({
   remainingQuantity: number;
   userHasBorrowed: boolean;
   hasReachedLimit: boolean;
-  handleBorrow: (bookId: string) => void;
+  handleBorrow: (bookId: string, bookTitle: string) => void;
   handleReturn: (bookId: string) => void;
   isAdmin: boolean;
   handleEdit: (bookId: string) => () => void;
@@ -63,7 +63,7 @@ const BookCard = ({
                 : "bg-orange-500 text-white hover:bg-orange-600 focus:ring-orange-500"
             }`}
             disabled={hasReachedLimit}
-            onClick={() => handleBorrow(book.id)}
+            onClick={() => handleBorrow(book.id, book.title)}
           >
             Borrow
           </button>

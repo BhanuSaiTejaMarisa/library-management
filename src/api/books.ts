@@ -40,3 +40,50 @@ export const borrowBook = (bookId: string, userId: number) => {
 export const returnBook = (id: string) => {
   return axiosInstance.delete(`/borrowedBooks/${id}`);
 };
+
+export const postBorrowedHistory = ({
+  bookId,
+  bookTitle,
+  userId,
+  username,
+  borrowedDate,
+}: {
+  bookId: string;
+  userId: number;
+  borrowedDate: string;
+  bookTitle: string;
+  username: string;
+}) => {
+  return axiosInstance.post("/borrowedHistory", {
+    bookId,
+    bookTitle,
+    userId,
+    username,
+    status: "borrowed",
+    borrowedDate,
+    returnDate: "",
+  });
+};
+
+export const fetchBorrowedHistoryByParams = async (
+  bookId: string,
+  userId: string
+) => {
+  return axiosInstance.get(
+    `/borrowedHistory?userId=${userId}&bookId=${bookId}`
+  );
+};
+
+export const updateBorrowedHistory = (
+  id: string,
+  returnDate: string
+): Promise<void> => {
+  return axiosInstance.patch(`/borrowedHistory/${id}`, {
+    status: "returned",
+    returnDate,
+  });
+};
+
+export const getBorrowedHistory = () => {
+  return axiosInstance.get("/borrowedHistory");
+};

@@ -4,12 +4,16 @@ import BookCard, { BookProps } from "../../components/BookCard";
 import { checkIsAdmin, getUser } from "../../utils/auth";
 import {
   borrowBook,
+  fetchBorrowedHistoryByParams,
   getBooks,
   getBorrowedBooks,
+  postBorrowedHistory,
   returnBook,
+  updateBorrowedHistory,
 } from "../../api/books";
 import { useNavigate } from "react-router-dom";
 import useCustomSnackbar from "../../hooks/useCustomSnackbar";
+import { getCurrentDateTime } from "../../utils/date";
 
 const HomePage = () => {
   const [books, setBooks] = useState<BookProps[]>([]);
@@ -65,6 +69,15 @@ const HomePage = () => {
       if (borrowedBook) {
         await returnBook(borrowedBook.id);
 
+        const { data: userBooksInHistory } = await fetchBorrowedHistoryByParams(
+          bookId,
+          loggedInUser.id
+        );
+        await updateBorrowedHistory(
+          userBooksInHistory[0].id,
+          getCurrentDateTime()
+        );
+
         const updatedBorrowedBooks = borrowedBooks.filter(
           (b) => b.bookId !== bookId && b.userId !== loggedInUser.id
         );
@@ -80,10 +93,18 @@ const HomePage = () => {
     }
   };
 
-  const handleBorrow = async (bookId: string) => {
+  const handleBorrow = async (bookId: string, bookTitle: string) => {
     try {
       const { data } = await borrowBook(bookId, loggedInUser.id);
+      const body = {
+        bookId,
+        userId: loggedInUser.id,
+        username: loggedInUser.name,
+        bookTitle,
+        borrowedDate: getCurrentDateTime(),
+      };
 
+      await postBorrowedHistory(body);
       setBorrowedBooks([...borrowedBooks, { ...data }]);
       showSnackbar("Book borrowed successfully");
     } catch (error) {
