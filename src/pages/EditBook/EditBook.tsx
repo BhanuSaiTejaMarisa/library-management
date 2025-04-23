@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createBook, getBookById, updateBookQuantity } from "../../api/books";
-import { BookProps } from "../../components/BookCard";
 import CustomInput from "../../components/CustomInput";
 import useCustomSnackbar from "../../hooks/useCustomSnackbar";
+import { BookProps } from "../../interfaces/BookProps";
 
 const EditBookPage = () => {
   const [book, setBook] = useState<BookProps>({} as BookProps);

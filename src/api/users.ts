@@ -1,11 +1,10 @@
+import { UserProps } from "../interfaces/UserProps";
 import axiosInstance from "./axiosInstance";
-interface UserProps {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
-}
 
 export const getUsers = () => {
   return axiosInstance.get<UserProps[]>("/users");
+};
+
+export const deleteUser = (userId: string) => {
+  return axiosInstance.delete<UserProps[]>(`/users/${userId}`);
 };

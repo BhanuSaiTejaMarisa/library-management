@@ -2,18 +2,7 @@ import React, { useEffect } from "react";
 
 import { getBorrowedHistory } from "../../api/books";
 import useCustomSnackbar from "../../hooks/useCustomSnackbar";
-
-const TableHeaderCell = ({ children }: { children: React.ReactNode }) => (
-  <th className="px-4 py-2 border border-gray-200 text-left text-sm font-medium text-gray-600">
-    {children}
-  </th>
-);
-
-const TableBodyCell = ({ children }: { children: React.ReactNode }) => (
-  <td className="px-4 py-2 border border-gray-200 text-sm text-gray-700">
-    {children}
-  </td>
-);
+import TableElements from "../../components/TableElements";
 
 const AdminPage = () => {
   const [history, setHistory] = React.useState<
@@ -52,12 +41,12 @@ const AdminPage = () => {
         <table className="min-w-full border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100">
-              <TableHeaderCell>Sno.</TableHeaderCell>
-              <TableHeaderCell>Book Title</TableHeaderCell>
-              <TableHeaderCell>Username</TableHeaderCell>
-              <TableHeaderCell>Status</TableHeaderCell>
-              <TableHeaderCell>Borrowed Date</TableHeaderCell>
-              <TableHeaderCell>Return Date</TableHeaderCell>
+              <TableElements.HeaderCell>Sno.</TableElements.HeaderCell>
+              <TableElements.HeaderCell>Book Title</TableElements.HeaderCell>
+              <TableElements.HeaderCell>Username</TableElements.HeaderCell>
+              <TableElements.HeaderCell>Status</TableElements.HeaderCell>
+              <TableElements.HeaderCell>Borrowed Date</TableElements.HeaderCell>
+              <TableElements.HeaderCell>Return Date</TableElements.HeaderCell>
             </tr>
           </thead>
           <tbody>
@@ -66,10 +55,10 @@ const AdminPage = () => {
                 key={item.id}
                 className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
               >
-                <TableBodyCell>{index + 1}</TableBodyCell>
-                <TableBodyCell>{item.bookTitle}</TableBodyCell>
-                <TableBodyCell>{item.username}</TableBodyCell>
-                <TableBodyCell>
+                <TableElements.BodyCell>{index + 1}</TableElements.BodyCell>
+                <TableElements.BodyCell>{item.bookTitle}</TableElements.BodyCell>
+                <TableElements.BodyCell>{item.username}</TableElements.BodyCell>
+                <TableElements.BodyCell>
                   <span
                     className={
                       item.status === "returned"
@@ -79,9 +68,9 @@ const AdminPage = () => {
                   >
                     {item.status}
                   </span>
-                </TableBodyCell>
-                <TableBodyCell>{item.borrowedDate}</TableBodyCell>
-                <TableBodyCell>{item.returnDate || "N/A"}</TableBodyCell>
+                </TableElements.BodyCell>
+                <TableElements.BodyCell>{item.borrowedDate}</TableElements.BodyCell>
+                <TableElements.BodyCell>{item.returnDate || "N/A"}</TableElements.BodyCell>
               </tr>
             ))}
           </tbody>

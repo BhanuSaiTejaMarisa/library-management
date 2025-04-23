@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { getUser } from "./auth";
+import { getUserFromStorage } from "./auth";
 
 import { ReactNode } from "react";
 
 const PrivateRoutes = ({ children }: { children: ReactNode }) => {
-  const user = getUser();
+  const user = getUserFromStorage();
 
   return user ? children : <Navigate to="/login" />;
 };

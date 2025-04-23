@@ -1,5 +1,5 @@
+import { BookProps } from "../interfaces/BookProps";
 import axiosInstance from "./axiosInstance";
-import { BookProps } from "../components/BookCard";
 
 // fetch all books
 export const getBooks = () => {
@@ -28,6 +28,10 @@ export const createBook = (book: BookProps) => {
 
 export const getBorrowedBooks = () => {
   return axiosInstance.get("/borrowedBooks");
+};
+
+export const getUserBorrowedBooks = (userId: string) => {
+  return axiosInstance.get(`/borrowedBooks/?userId=${userId}`);
 };
 
 export const borrowBook = (bookId: string, userId: number) => {
@@ -65,13 +69,17 @@ export const postBorrowedHistory = ({
   });
 };
 
-export const fetchBorrowedHistoryByParams = async (
-  bookId: string,
-  userId: string
-) => {
-  return axiosInstance.get(
-    `/borrowedHistory?userId=${userId}&bookId=${bookId}`
-  );
+export const fetchBorrowedHistoryByParams = async (params: {
+  bookId?: string;
+  userId?: string;
+  status?: string;
+}) => {
+  return axiosInstance.get(`/borrowedHistory`, {
+    params: {
+      ...params,
+      status: params.status || "borrowed",
+    },
+  });
 };
 
 export const updateBorrowedHistory = (

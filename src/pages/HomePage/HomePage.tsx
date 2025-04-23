@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import BookCard, { BookProps } from "../../components/BookCard";
-import { checkIsAdmin, getUser } from "../../utils/auth";
+import BookCard from "../../components/BookCard";
+import { checkIsAdmin, getUserFromStorage } from "../../utils/auth";
 import {
   borrowBook,
   fetchBorrowedHistoryByParams,
@@ -14,6 +14,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import useCustomSnackbar from "../../hooks/useCustomSnackbar";
 import { getCurrentDateTime } from "../../utils/date";
+import { BookProps } from "../../interfaces/BookProps";
 
 const HomePage = () => {
   const [books, setBooks] = useState<BookProps[]>([]);
@@ -25,7 +26,7 @@ const HomePage = () => {
 
   const navigate = useNavigate();
 
-  const loggedInUser = getUser();
+  const loggedInUser = getUserFromStorage();
 
   useEffect(() => {
     const handleGetBooks = async () => {
@@ -70,8 +71,7 @@ const HomePage = () => {
         await returnBook(borrowedBook.id);
 
         const { data: userBooksInHistory } = await fetchBorrowedHistoryByParams(
-          bookId,
-          loggedInUser.id
+          { bookId, userId: loggedInUser.id }
         );
         await updateBorrowedHistory(
           userBooksInHistory[0].id,
