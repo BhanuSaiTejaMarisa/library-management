@@ -12,7 +12,7 @@ export const getBookById = (bookId: string) => {
 };
 
 // update book quantity
-export const updateBookQuantity = async (
+export const updateBookQuantity = (
   bookId: string,
   quantity: number
 ): Promise<void> => {
@@ -20,7 +20,7 @@ export const updateBookQuantity = async (
 };
 
 // create new book
-export const createBook = async (book: BookProps) => {
+export const createBook = (book: BookProps) => {
   return axiosInstance.post("/books", book);
 };
 

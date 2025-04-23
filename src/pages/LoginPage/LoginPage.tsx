@@ -3,10 +3,12 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../lib/firebase";
 import { useNavigate } from "react-router-dom";
 import { getUsers } from "../../api/users";
+import useCustomSnackbar from "../../hooks/useCustomSnackbar";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const showSnackbar = useCustomSnackbar();
 
   const navigate = useNavigate();
 
@@ -30,10 +32,12 @@ const LoginPage = () => {
       }
 
       localStorage.setItem("user", JSON.stringify(loggedInUser));
-
+      showSnackbar("Login successful");
+      
       navigate("/");
     } catch (error) {
-      console.error("Login failed:", error);
+      showSnackbar("Invalid email or password", "error");
+      console.error("Error logging in:", error);
     }
   };
 

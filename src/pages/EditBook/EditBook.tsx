@@ -3,9 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { createBook, getBookById, updateBookQuantity } from "../../api/books";
 import { BookProps } from "../../components/BookCard";
 import CustomInput from "../../components/CustomInput";
+import useCustomSnackbar from "../../hooks/useCustomSnackbar";
 
 const EditBookPage = () => {
   const [book, setBook] = useState<BookProps>({} as BookProps);
+
+  const showSnackbar = useCustomSnackbar();
 
   const { bookId } = useParams();
   const navigate = useNavigate();
@@ -19,22 +22,29 @@ const EditBookPage = () => {
           setBook(response.data);
         } catch (error) {
           console.error("Error fetching book details:", error);
+          showSnackbar("Error fetching book details", "error");
         }
       };
-
       fetchBookDetails();
     }
   }, [bookId]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    if (bookId) {
-      await updateBookQuantity(bookId, book.quantity);
-    } else {
-      await createBook(book);
+      if (bookId) {
+        await updateBookQuantity(bookId, book.quantity);
+        showSnackbar("Book updated successfully");
+      } else {
+        await createBook(book);
+        showSnackbar("Book created successfully");
+      }
+      navigate("/");
+    } catch (error) {
+      console.error("Error updating book:", error);
+      showSnackbar("Error updating book", "error");
     }
-    navigate("/");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -9,12 +9,15 @@ import {
   returnBook,
 } from "../../api/books";
 import { useNavigate } from "react-router-dom";
+import useCustomSnackbar from "../../hooks/useCustomSnackbar";
 
 const HomePage = () => {
   const [books, setBooks] = useState<BookProps[]>([]);
   const [borrowedBooks, setBorrowedBooks] = useState<
     { bookId: string; userId: number; id: string }[]
   >([]);
+
+  const showSnackbar = useCustomSnackbar();
 
   const navigate = useNavigate();
 
@@ -28,6 +31,7 @@ const HomePage = () => {
         setBooks(response.data);
       } catch (error) {
         console.error("Error fetching books:", error);
+        showSnackbar("Error fetching books", "error");
       }
     };
 
@@ -37,6 +41,7 @@ const HomePage = () => {
         setBorrowedBooks(response.data);
       } catch (error) {
         console.error("Error fetching Borrowed books:", error);
+        showSnackbar("Error fetching borrowed books", "error");
       }
     };
 
@@ -52,25 +57,39 @@ const HomePage = () => {
   };
 
   const handleReturn = async (bookId: string) => {
-    const borrowedBook = borrowedBooks.find(
-      (b) => b.bookId === bookId && b.userId === loggedInUser.id
-    );
-
-    if (borrowedBook) {
-      await returnBook(borrowedBook.id);
-
-      const updatedBorrowedBooks = borrowedBooks.filter(
-        (b) => b.bookId !== bookId && b.userId !== loggedInUser.id
+    try {
+      const borrowedBook = borrowedBooks.find(
+        (b) => b.bookId === bookId && b.userId === loggedInUser.id
       );
-      setBorrowedBooks(updatedBorrowedBooks);
+
+      if (borrowedBook) {
+        await returnBook(borrowedBook.id);
+
+        const updatedBorrowedBooks = borrowedBooks.filter(
+          (b) => b.bookId !== bookId && b.userId !== loggedInUser.id
+        );
+        setBorrowedBooks(updatedBorrowedBooks);
+        showSnackbar("Book returned successfully");
+      } else {
+        showSnackbar("You have not borrowed this book", "error");
+        console.error("You have not borrowed this book");
+      }
+    } catch (error) {
+      console.error("Error returning book:", error);
+      showSnackbar("Error returning book", "error");
     }
   };
 
   const handleBorrow = async (bookId: string) => {
-    const { data } = await borrowBook(bookId, loggedInUser.id);
+    try {
+      const { data } = await borrowBook(bookId, loggedInUser.id);
 
-    const updatedBorrowedBooks = [...borrowedBooks, { ...data }];
-    setBorrowedBooks([...updatedBorrowedBooks]);
+      setBorrowedBooks([...borrowedBooks, { ...data }]);
+      showSnackbar("Book borrowed successfully");
+    } catch (error) {
+      console.error("Error borrowing book:", error);
+      showSnackbar("Error borrowing book", "error");
+    }
   };
 
   const handleEdit = (bookId: string) => () => {
