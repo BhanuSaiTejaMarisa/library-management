@@ -93,16 +93,17 @@ const HomePage = () => {
     }
   };
 
-  const handleBorrow = async (bookId: string, bookTitle: string) => {
+  const handleBorrow = async (book: BookProps) => {
     try {
-      const { data } = await borrowBook(bookId, loggedInUser.id);
       const body = {
-        bookId,
+        bookId: book.id,
         userId: loggedInUser.id,
         username: loggedInUser.name,
-        bookTitle,
+        title: book.title,
+        author: book.author,
         borrowedDate: getCurrentDateTime(),
       };
+      const { data } = await borrowBook(body);
 
       await postBorrowedHistory(body);
       setBorrowedBooks([...borrowedBooks, { ...data }]);

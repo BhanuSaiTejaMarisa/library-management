@@ -1,4 +1,5 @@
 import { BookProps } from "../interfaces/BookProps";
+import { BorrowedBookProps } from "../interfaces/BorrowedBookProps";
 import axiosInstance from "./axiosInstance";
 
 // fetch all books
@@ -34,38 +35,19 @@ export const getUserBorrowedBooks = (userId: string) => {
   return axiosInstance.get(`/borrowedBooks/?userId=${userId}`);
 };
 
-export const borrowBook = (bookId: string, userId: number) => {
-  return axiosInstance.post("/borrowedBooks", {
-    bookId,
-    userId,
-  });
+export const borrowBook = (body: BorrowedBookProps) => {
+  return axiosInstance.post("/borrowedBooks", body);
 };
 
 export const returnBook = (id: string) => {
   return axiosInstance.delete(`/borrowedBooks/${id}`);
 };
 
-export const postBorrowedHistory = ({
-  bookId,
-  bookTitle,
-  userId,
-  username,
-  borrowedDate,
-}: {
-  bookId: string;
-  userId: number;
-  borrowedDate: string;
-  bookTitle: string;
-  username: string;
-}) => {
+export const postBorrowedHistory = (body:BorrowedBookProps) => {
   return axiosInstance.post("/borrowedHistory", {
-    bookId,
-    bookTitle,
-    userId,
-    username,
     status: "borrowed",
-    borrowedDate,
     returnDate: "",
+    ...body,
   });
 };
 

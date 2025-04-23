@@ -1,8 +1,6 @@
 import React from "react";
 import { BookProps } from "../interfaces/BookProps";
 
-
-
 const BookCard = ({
   book,
   remainingQuantity,
@@ -17,7 +15,7 @@ const BookCard = ({
   remainingQuantity: number;
   userHasBorrowed: boolean;
   hasReachedLimit: boolean;
-  handleBorrow: (bookId: string, bookTitle: string) => void;
+  handleBorrow: (book: BookProps) => void;
   handleReturn: (bookId: string) => void;
   isAdmin: boolean;
   handleEdit: (bookId: string) => () => void;
@@ -55,7 +53,7 @@ const BookCard = ({
                 : "bg-orange-500 text-white hover:bg-orange-600 focus:ring-orange-500"
             }`}
             disabled={hasReachedLimit}
-            onClick={() => handleBorrow(book.id, book.title)}
+            onClick={() => handleBorrow(book)}
           >
             Borrow
           </button>

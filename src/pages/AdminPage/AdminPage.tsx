@@ -8,7 +8,7 @@ const AdminPage = () => {
   const [history, setHistory] = React.useState<
     {
       id: string;
-      bookTitle: string;
+      title: string;
       username: string;
       status: string;
       borrowedDate: string;
@@ -56,7 +56,7 @@ const AdminPage = () => {
                 className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}
               >
                 <TableElements.BodyCell>{index + 1}</TableElements.BodyCell>
-                <TableElements.BodyCell>{item.bookTitle}</TableElements.BodyCell>
+                <TableElements.BodyCell>{item.title}</TableElements.BodyCell>
                 <TableElements.BodyCell>{item.username}</TableElements.BodyCell>
                 <TableElements.BodyCell>
                   <span
@@ -69,8 +69,12 @@ const AdminPage = () => {
                     {item.status}
                   </span>
                 </TableElements.BodyCell>
-                <TableElements.BodyCell>{item.borrowedDate}</TableElements.BodyCell>
-                <TableElements.BodyCell>{item.returnDate || "N/A"}</TableElements.BodyCell>
+                <TableElements.BodyCell>
+                  {item.borrowedDate}
+                </TableElements.BodyCell>
+                <TableElements.BodyCell>
+                  {item.returnDate || "N/A"}
+                </TableElements.BodyCell>
               </tr>
             ))}
           </tbody>

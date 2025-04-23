@@ -193,9 +193,31 @@
   ],
   "borrowedBooks": [
     {
-      "id": "eb7e",
-      "bookId": "7",
-      "userId": "1"
+      "id": "9c04",
+      "bookId": "6",
+      "userId": "2",
+      "username": "Test User",
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "borrowedDate": "23/4/2025, 5:13:00 pm"
+    },
+    {
+      "id": "47d0",
+      "bookId": "6",
+      "userId": "5",
+      "username": "Bhanu",
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "borrowedDate": "23/4/2025, 5:25:36 pm"
+    },
+    {
+      "id": "07a2",
+      "bookId": "2",
+      "userId": "5",
+      "username": "Bhanu",
+      "title": "The Power of Now",
+      "author": "Eckhart Tolle",
+      "borrowedDate": "23/4/2025, 5:25:38 pm"
     }
   ],
   "users": [
@@ -203,51 +225,126 @@
       "id": "1",
       "email": "adminuser@gmail.com",
       "name": "Admin User",
-      "role": "admin"
+      "role": "admin",
+      "password": "admin123"
     },
     {
       "id": "2",
       "email": "testuser@abc.com",
       "name": "Test User",
-      "role": "user"
+      "role": "user",
+      "password": "test123"
+    },
+    {
+      "id": "3",
+      "email": "librarian@123.com",
+      "name": "Librarian",
+      "role": "admin",
+      "password": "librarian123"
+    },
+    {
+      "id": "4",
+      "email": "student@123.com",
+      "name": "Student",
+      "role": "user",
+      "password": "student123"
+    },
+    {
+      "id": "5",
+      "email": "bhanu@gmail.com",
+      "name": "Bhanu",
+      "role": "user",
+      "password": "bhanu123"
     }
   ],
   "borrowedHistory": [
     {
-      "id": "866e",
-      "bookId": "7",
-      "userId": "1",
+      "id": "e362",
       "status": "returned",
-      "borrowedDate": "23/4/2025, 12:59:35 pm",
-      "returnDate": "23/4/2025, 1:04:18 pm"
+      "returnDate": "23/4/2025, 4:48:11 pm",
+      "bookId": "2",
+      "userId": "1",
+      "username": "Admin User",
+      "title": "The Power of Now",
+      "author": "Eckhart Tolle",
+      "borrowedDate": "23/4/2025, 4:47:45 pm"
     },
     {
-      "id": "63a8",
-      "bookId": "6",
-      "userId": "1",
+      "id": "ea5b",
       "status": "returned",
-      "borrowedDate": "23/4/2025, 12:59:36 pm",
-      "returnDate": "23/4/2025, 1:04:16 pm"
-    },
-    {
-      "id": "45c4",
+      "returnDate": "23/4/2025, 4:55:13 pm",
       "bookId": "3",
-      "bookTitle": "The Subtle Art of Not Giving a F*ck",
       "userId": "1",
       "username": "Admin User",
-      "status": "returned",
-      "borrowedDate": "23/4/2025, 1:04:52 pm",
-      "returnDate": "23/4/2025, 2:26:27 pm"
+      "title": "The Subtle Art of Not Giving a F*ck",
+      "author": "Mark Manson",
+      "borrowedDate": "23/4/2025, 4:47:47 pm"
     },
     {
-      "id": "bcf2",
-      "bookId": "7",
-      "bookTitle": "The Great Gatsby",
+      "id": "8b75",
+      "status": "returned",
+      "returnDate": "23/4/2025, 4:59:10 pm",
+      "bookId": "1",
       "userId": "1",
       "username": "Admin User",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "borrowedDate": "23/4/2025, 4:56:26 pm"
+    },
+    {
+      "id": "b5b8",
+      "status": "returned",
+      "returnDate": "23/4/2025, 4:59:24 pm",
+      "bookId": "1",
+      "userId": "1",
+      "username": "Admin User",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "borrowedDate": "23/4/2025, 4:59:17 pm"
+    },
+    {
+      "id": "d8fd",
+      "status": "returned",
+      "returnDate": "23/4/2025, 5:13:04 pm",
+      "bookId": "1",
+      "userId": "2",
+      "username": "Test User",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "borrowedDate": "23/4/2025, 5:12:59 pm"
+    },
+    {
+      "id": "2346",
       "status": "borrowed",
-      "borrowedDate": "23/4/2025, 1:04:56 pm",
-      "returnDate": ""
+      "returnDate": "",
+      "bookId": "6",
+      "userId": "2",
+      "username": "Test User",
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "borrowedDate": "23/4/2025, 5:13:00 pm"
+    },
+    {
+      "id": "fb80",
+      "status": "borrowed",
+      "returnDate": "",
+      "bookId": "6",
+      "userId": "5",
+      "username": "Bhanu",
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "borrowedDate": "23/4/2025, 5:25:36 pm"
+    },
+    {
+      "id": "bcab",
+      "status": "borrowed",
+      "returnDate": "",
+      "bookId": "2",
+      "userId": "5",
+      "username": "Bhanu",
+      "title": "The Power of Now",
+      "author": "Eckhart Tolle",
+      "borrowedDate": "23/4/2025, 5:25:38 pm"
     }
   ]
 }

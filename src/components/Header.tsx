@@ -16,7 +16,9 @@ const Header = () => {
   return (
     <div className="fixed top-0 left-0 w-full h-16 bg-gray-100 shadow-md flex justify-between items-center p-4 z-10">
       <div>
-        <h1 className="text-xl font-bold text-orange-500">Bibliophile Cafe</h1>
+        <Link to="/" className="text-xl font-bold text-orange-500 hover:text-orange-600 transition">
+          Bibliophile Cafe
+        </Link>
       </div>
       <div className="flex gap-4 items-center">
         {checkIsAdmin() && (
