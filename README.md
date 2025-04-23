@@ -27,10 +27,7 @@ This is a Library Management frontend app built with **React + TypeScript + Tail
 
 ## 🧩 Missing / To Be Implemented
 
-- [ ] “My Books” Page for User/Admin
-- [ ] Admin Book Management & User History
-- [ ] Error/Loading States
-- [ ] Toast notifications for API success/failure
+- [ ] Loading States
 - [ ] Tests (Jest/Cypress) - TDD
 - [ ] Improved DRY / KISS principles
 
